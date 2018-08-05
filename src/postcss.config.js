@@ -4,4 +4,4 @@ module.exports = ({ file, options, env }) => ({
         'postcss-cssnext': {},
         'cssnano':  env === 'production'  ? {} : false
       }
-  })
+  });

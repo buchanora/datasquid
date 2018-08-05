@@ -1,28 +1,19 @@
 # Overview
 
-<!-- > WARNING!!! This library is undergoing active prerelease development. Please check back daily for feature/documentation updates & bug fixes. -->
+Datasquire provides a simple, flexible, declarative api for building beautiful data table/grid interfaces in [ReactJS](https://facebook.github.io/react) .
 
-Fieldstack is the most robust [ReactJS](https://facebook.github.io/react) component library for building beautiful, flexible & highly interactive form-based interfaces.
+## Why anouther Table/grid API for React?
+
+The React ecosystem boasts some really good datatable components like griddle. WHile these projects are powerful and highly configurable, they for the most part lack the visual appeal to be used as is. The goal of Datasquire is to provide a component and utility api that is can be dropped into any project as is without apending hours on styling configuration. Beyond being usable out of the box, datasquire still gives you the option to configure styles and functionality to your hearts desire as your project matures.
 
 ## Installation
-```npm install --save fieldstack```
+```npm install --save datasquire```
 
-## Styles
+## Basic Usage
 
-Fieldstack relies on SCSS for styling. Be sure to import the library's style sheets into your application's Scss.
-
-### Sass Import
-```
-@import '~fieldstack/lib/style_config'
-@import '~fieldStack/lib/default_theme';
-@import '~fieldstack/lib/base_styles';
-```
->To customize theme colors, fonts etc, copy `style_config.scss` and replace the values in it with your custom values.
-
-## Basic Example
 ```
   import React, {Component} from 'react';
-  import {FieldStack} from 'fieldstack';
+  import {DataTable} from 'datasquire';
 
   class SampleForm extends Component{
     state: {
@@ -48,7 +39,7 @@ Fieldstack relies on SCSS for styling. Be sure to import the library's style she
     }
   }
 
-  formData: {
+  const formData = {
     formTitle: 'Signup Form',
     fields: [
       {
@@ -69,7 +60,7 @@ Fieldstack relies on SCSS for styling. Be sure to import the library's style she
       {
         name: 'about',
         label: 'Company Bio',
-        type: 'multiline-text',
+        type: 'multiLineText',
       },
       {
         name: 'regDate',
@@ -84,7 +75,7 @@ Fieldstack relies on SCSS for styling. Be sure to import the library's style she
       {
         name: 'industry',
         label: 'Industry',
-        type: 'option-text',
+        type: 'optionText',
         options: [
           'Automobile',
           'Building',
@@ -96,16 +87,16 @@ Fieldstack relies on SCSS for styling. Be sure to import the library's style she
         name: 'phone',
         label: 'Phone Number',
         type: 'tel',
-      }
+      },
       {
         name: 'accountType',
         label: 'Account Type',
         type: 'selectFieldSet',
         options: [
-          {key:'savings', label: 'Saving Account'},
-          {key:'current', label: 'Current Account'},
-          {key:'escrow', label: 'Escrow Account'},
-          {key:'dom', label: 'Dom Account'},
+          {value:'savings', name: 'Saving Account'},
+          {value:'current', name: 'Current Account'},
+          {value:'escrow', name: 'Escrow Account'},
+          {value:'dom', name: 'Dom Account'},
         ]
       },
       {
@@ -113,263 +104,62 @@ Fieldstack relies on SCSS for styling. Be sure to import the library's style she
         label: 'Addon Features',
         type: 'multiSelectFieldSet',
         options: [
-          {key:'social', label: 'Social Banking'},
-          {key:'lifestyle', label: 'Lifestyle Banking'},
-          {key:'mobile', label: 'Mobile Banking'}
+          {value:'social', name: 'Social Banking'},
+          {value:'lifestyle', name: 'Lifestyle Banking'},
+          {value:'mobile', name: 'Mobile Banking'}
         ]
       },
     ]
   }
 ```
-> See [Fieldstack](#fieldstack) Component documentation 
->for a more advanced example
 
-# Components
+## Components
 
-## [Fieldstack](#fieldstack)
+### [Fieldstack](#fieldstack)
 <!--- ### Example --->
 
-### Props
-
-#### activeFieldIndex
-> `number` | defaults to null
-
-#### actions
-> `object` | defaults to `{}`
-
-#### disabledForm
-> `boolean` | defaults to `false`
-
-#### disabledFields
-> `object` | defaults to `{}`
-
-#### formData
-> `object` | defaults to `null`
-
-#### fieldErrors
-> `object` | defaults to `{}`
-
-#### formError
-> `string` | defaults to `null`
-
-#### render
-> `function(options: object)` | defaults to `null`
-
-#### values
-> `object` | defaults to `{}`
+#### Props
+```
+  activeFieldIndex: PropTypes.number,
+  actions: PropTypes.object.isRequired,
+  disabledForm: PropTypes.bool,
+  disabledFields: PropTypes.object,
+  formData: PropTypes.object,
+  fieldErrors: PropTypes.object,
+  formError: PropTypes.string,
+  render: PropTypes.func,
+  values: PropTypes.object
+```
 
 
+## Styles
 
-## [TextField](#textField)
-## [DateField](#DateField)
-## [TimeField](#timeField)
-<!--- ### Example --->
+Fieldstack relies on SCSS for styling. Be sure to import the library's style sheets into your application's SCSS.
 
-### Props
+### Sass Imports
+```
+@import '~fieldStack/lib/theme';
+@import '~fieldstack/lib/config';
+@import '~fieldstack/lib/styles';
+```
+`~` refereces node_modules directory
 
-#### className
-> `string` | defaults to `""`
+### Theming/Customisation
+To customize theme colors, fonts etc, copy the contents of `fieldstack/lib/style_config.scss` and override the variable values in it with your custom values.
 
-#### disabled
-> `boolean` | defaults to `false`
 
-#### error
-> `string` | defaults to `null`
 
-#### expand
-> `boolean` | defaults to `false`
+## Development
+* To run FieldStack locally
+* Clone the repo
+* `npm install`
+* `npm run storybook`
+* Visit localhost:9001
 
-#### id
-> `string` | defaults to `""`
+## Contibution
+* To build distribution run `npm run build`
+* Run `npm test` for test
 
-#### label
-> `string` | defaults to `""`
-
-#### name
-> `string` | defaults to `null`
-
-#### onChange
-> `function(event: syntheticEvent)` | defaults to `()=>{}`
-
-#### SubmitEditing
-> `function(event: syntheticEvent)` | defaults to `()=>{}`
-
-#### onKeyDown
-> `function(event: syntheticEvent)` | defaults to `()=>{}`
-
-#### onKeyUp
-> `function(event: syntheticEvent)` | defaults to `()=>{}`
-
-#### onMouseEnter
-> `function(event: syntheticEvent)` | defaults to `()=>{}`
-
-#### onMouseLeave
-> `function(event: syntheticEvent)` | defaults to `()=>{}`
-
-#### required
-> `bolean` | defaults to `false`
-
-#### type
-> `string` | defaults to `""`
-
-#### uncollapse
-> `bolean` | defaults to `false`
-
-#### values
-> `string` | defaults to `""`
-
-## [OptionTextField](#OptionTextField)
-### Props
-Same as `TextField` +
-#### rows
-> `options` | defaults to `[]`
-
-## [MultiLineField](#MultiLineField)
-### Props
-Same as `TextField` +
-#### rows
-> `number` | defaults to `3`
-
-## [DraftField](#DraftField)
-### Props
-#### className
-> `string` | defaults to `""`
-
-#### error
-> `string` | defaults to `null`
-
-#### expand
-> `boolean` | defaults to `false`
-
-#### id
-> `string` | defaults to `""`
-
-#### label
-> `string` | defaults to `""`
-
-#### onChange
-> `function(event: syntheticEvent)` | defaults to `()=>{}`
-
-<!-- #### onKeyDown
-> `function(event: syntheticEvent)` | defaults to `()=>{}`
-
-#### onKeyUp
-> `function(event: syntheticEvent)` | defaults to `()=>{}`
-
-#### onMouseEnter
-> `function(event: syntheticEvent)` | defaults to `()=>{}`
-
-#### onMouseLeave
-> `function(event: syntheticEvent)` | defaults to `()=>{}` -->
-
-<!-- #### required
-> `bolean` | defaults to `false` -->
-
-#### uncollapse
-### Props
-> `bolean` | defaults to `false`
-
-#### editorState
-### Props
-> `object` | defaults to ` <DraftJS Editor State>`
-
-## [FieldRow](#FieldRow)
-### Props
-#### uncollapse
-> `uncollapse` | defaults to `false`
-
-<!-- ## [RangeSelect](#RangeSelect) -->
-## [SelectFieldSet](#SelectFieldSet)
-### Props
-#### className
-> `string` | defaults to `""`
-
-#### disabled
-> `boolean` | defaults to `false`
-
-#### error
-> `string` | defaults to `null`
-
-#### expand
-> `boolean` | defaults to `false`
-
-#### id
-> `string` | defaults to `""`
-
-#### label
-> `string` | defaults to `""`
-
-#### name
-> `string` | defaults to `null`
-
-#### onChange
-> `function(event: syntheticEvent)` | defaults to `()=>{}`
-#### options
-> `array` | defaults to `null`
-#### selection
-> `object []` | 
-> of shape:
-> `{ key: string,
->   label: string,
->   iconClass: string }` | 
->defaults to `null`
-#### style
-> `string` | one of `checkList`, `buttonGrid` | defaults to `null`
-## [MultiSelectFieldSet](#MultiSelectFieldSet)
-### Props
-#### className
-> `string` | defaults to `""`
-
-#### disabled
-> `boolean` | defaults to `false`
-
-#### error
-> `string` | defaults to `null`
-
-#### expand
-> `boolean` | defaults to `false`
-
-#### id
-> `string` | defaults to `""`
-
-#### label
-> `string` | defaults to `""`
-
-#### name
-> `string` | defaults to `null`
-
-#### onChange
-> `function(event: syntheticEvent)` | defaults to `()=>{}`
-#### options
-> `array` | defaults to `null`
-#### selection
-> `object` | 
-> of shape:
-> `{ key: string,
->   label: string,
->   iconClass: string }` | 
->defaults to `null`
-#### style
-> `string` | one of `checkList`, `buttonGrid` | defaults to `null`
-
-<!-- ## [SelectButton](#SelectButton) -->
-<!-- ## [SuggestionField](#SuggestionField) -->
-## [UploadField](#UploadField)
-###props
-#### name
-> `string` | defaults to `null`
-#### icon
-> `boolean` | defaults to `true`
-#### disabled
-> `boolean` | defaults to `false`
-#### onChange
-> `function(event: syntheticEvent)` | defaults to `()=>{}`
-#### label
-> `string` | defaults to `""`
-#### multiple
-> `boolean` | defaults to `false`
-#### required
-> `boolean` | defaults to `false`
 
 
 ## License

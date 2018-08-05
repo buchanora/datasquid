@@ -1,0 +1,706 @@
+// Range Reset
+//
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+  background: transparent; /* Otherwise white in Chrome */
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+
+  /* Hides the slider so custom styles can be added */
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+// Restyle range
+
+/* Special styling for WebKit/Blink */
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  // border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 4px;
+  background: $color-secondary-0;
+  cursor: pointer;
+  margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  // box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Add cool effects to your sliders! */
+}
+
+/* All the same stuff for Firefox */
+input[type=range]::-moz-range-thumb {
+  // box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  // border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 4px;
+  background: $color-secondary-0;
+  cursor: pointer;
+}
+
+/* All the same stuff for IE */
+input[type=range]::-ms-thumb {
+  // box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  // border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 4px;
+  background: $color-secondary-0;
+  cursor: pointer;
+}
+
+// Range slider
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  // box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: $color-tint-0;
+  border-radius: 4px;
+  // border: 0.2px solid #010101;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: $color-gray-4;
+}
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  // box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: $color-tint-0;
+  border-radius: 4px;
+  // border: 0.2px solid #010101;
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #2a6495;
+  // border: 0.2px solid #010101;
+  border-radius: 4px;
+  // box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: $color-tint-0;
+}
+input[type=range]::-ms-fill-upper {
+  background: $color-tint-0;
+  // border: 0.2px solid #010101;
+  border-radius: 4px;
+  // box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: $color-gray-4;
+}
+.range-label-wrapper{
+  color: $color-dark-0;
+  display: flex;
+  margin-top: 15px;
+  justify-content: space-between;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.selectButton{
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    background: $color-off-white;
+    height: 72px;
+}
+.selectButton-button{
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  // box-shadow: $shadow-z3;
+  z-index: $z3;
+  background-color: $color-tint-3;
+  background-repeat: no-repeat;
+  background-position: right center;
+  border: none;
+  border-right: none;
+  border-bottom: 2px solid $color-tint-1;
+  text-align: left;
+  color: $color-dark-gray;
+  font-weight: 700;
+  padding: 0 30px;
+  margin-bottom: 0;
+  height: 72px;
+  transition: all 0.25s ease-in-out;
+}
+.selectButton-button i, .selectButton-buttonMask i{
+  float: right;
+}
+.selectButton-button:focus{
+  outline: none;
+  background-color: $color-off-white;
+  border: none;
+  border-right: none;
+  box-shadow: none;
+}
+.selectButton-dropdown{
+  position: absolute;
+  z-index: $z9;
+  width: 100%;
+  // top: 72px;
+  right: 0;
+  background: #ffffff;
+  box-shadow: 1px 1px 4px -1px rgba(60, 60, 60, 0.2);
+  // border-bottom-left-radius: 4px;
+  // border-bottom-right-radius: 4px;
+  overflow: hidden;
+  transition: all 0.25s ease-in-out;;
+}
+.selectButton-dropdown:focus{
+  outline: none;
+}
+.selectButton-option{
+  display: flex;
+  z-index: $z9;
+  font-size: $font-size-down-1;
+  font-weight: 700;
+  align-items: center;
+  height: 72px;
+  border-bottom: 2px solid $color-tint-1;
+  padding: 24px 30px;
+  transition: all 0.25s ease-in-out;
+}
+.selectButton-option:last-of-type{
+  // border-bottom: none;
+}
+.selectButton-option:hover{
+  background: $color-tint-3;
+  cursor: pointer;
+}
+.selectButton-dropdown.show-dropdown{
+  height: auto;
+}
+.selectButton-dropdown.hide-dropdown{
+  height: 0;
+}
+.selectButton-button.show-dropdown{
+  display: none;
+}
+.selectButton-button.hide-dropdown{
+  display: block;
+}
+.selectButton-label{
+  font-size: $font-size-down-2;
+  color: $color-gray-0;
+  padding-bottom: 3.5px;
+}
+.draftField{
+  position: relative;
+  z-index: $z2;
+  background: $field-background;
+  margin: 0 auto;
+}
+.draftField:focus{
+  cursor: vertical-text;
+  outline: none;
+}
+.draftField-toolbar{
+  // background: $color-tint-3;
+  // padding: 15px 15px 5px 15px;
+  padding-top: 5px;
+  text-align: right;
+  // height: 60px;
+}
+.draft-tool-group{
+  display: inline;
+  margin-right: 7.5px;
+}
+.draftField .field-label {
+  transform: translateY(60px);
+  transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+.draftField-content{
+  padding: 15px;
+  position: relative;
+  min-height: 180px;
+
+}
+.draftField .toolbar-button{
+  display: inline-block;
+  padding: 7.5px;
+  color: $field-text-color--disabled;
+  border-radius: $edge-radius;
+  margin-right: 7.5px;
+  font-size: 14px;
+  transition: all 0.25s ease-in-out;
+}
+.draftField .toolbar-button:last-child{
+  margin-right: 0;
+}
+.draftField .toolbar-button:hover{
+  cursor: pointer;
+  color: $field-text-color;
+}
+.draftField .toolbar-button--active{
+  color: $field-text-color;
+}
+.radio-field, .radio-label, .check-field, .check-label{
+  color: $field-text-color;
+}
+.select-group{
+  font-family: $font-family;
+  border: none;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: $field-wrap-width;
+  color: $field-text-color;
+  padding-top: 16px;
+  padding-bottom: 8px;
+}
+.select-group::after{
+    display: block;
+    content: ' ';
+    background: $field-underline-color;
+    height: 1px;
+    margin-top: 7px;
+}
+.select-group:last-of-type::after{
+    display: none;
+}
+.select-label{
+  font-weight: 700;
+  color: $field-label-color;
+  font-size: $field-label-size--focus;
+  margin-bottom: 0;
+}
+.select-field{
+  // float: left;
+  // padding-bottom: 8px;
+  padding-top: 8px;
+}
+.select-caret{
+  float: right;
+}
+.checker{
+  font-size: $field-label-size;
+  box-sizing: border-box;
+  position: relative;
+  display: inline-block;
+  // width: 24px;
+  // height: 24px;
+  color: $color-white;
+  margin-right: 7.5px;
+}
+.checker-box{
+  text-align: center;
+  background-color: $color-mid-gray;
+  border-radius: 50%;
+  padding: 7.5px;
+  border: 1px solid $color-mid-gray;
+}
+.checker-sphere{
+  // top: 6px;
+  background-color: $color-white;
+  border-radius: 50%;
+  padding: 10px;
+  border: 1px solid $color-mid-gray;
+}
+.checker:hover{
+  cursor: pointer;
+}
+.checker-checked{
+  background: $color-secondary-2;
+  background-clip: padding-box;
+  border: 1px solid $color-secondary-0;
+  color: $color-white;
+}
+.checker-disabled{
+  color: $color-mid-gray;
+}
+.select-option{
+  display: flex;
+  align-items: center;
+  color: $color-dark-gray;
+  margin-right: 30px;
+  margin-bottom: 15px;
+  min-width: 160px;
+  text-align: left;
+  font-size: $font-size-down-1;
+}
+.select-option:hover{
+  cursor: pointer;
+}
+.select-option-checked{
+  font-weight: $global-weight-bold;
+  // color: $color-primary-0;
+}
+.select-option-disabled{
+  color: $color-mid-gray;
+}
+.select-button{
+  box-sizing: border-box;
+  display: inline-block;
+  border: 1px solid $color-gray-4;
+  border-radius: $edge-radius;
+  color: $field-label-color;
+  padding: 7.5px 15px;
+  margin-right: 15px;
+  font-size: $font-size-down-1;
+  // margin-left: 7.5px;
+  margin-bottom: 15px;
+  transition: opacity 0.2s ease-in-out;
+}
+.select-button:hover{
+  opacity: 0.6;
+  cursor: pointer;
+}
+.select-button-checked{
+  background-color: $color-secondary-0;
+  color: $color-white;
+  border: 2px solid $color-secondary-0;
+}
+.select-button-disabled{
+  color: $color-mid-gray;
+}
+.select-list-item{
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  font-size: $font-size-down-1;
+  // font-weight: 700;
+  border-top: 2px solid $color-tint-1;
+  padding: 18px 0;
+  transition: all 0.25s ease-in-out;
+}
+.select-list-item:last-child{
+  border-bottom: none;
+}
+.select-list-item:hover{
+  color: $color-primary-3;
+  cursor: pointer;
+}
+.select-list-item-checked{
+  color: $color-primary-0;
+}
+.select-list-item-disabled{
+  color: $color-mid-gray;
+}
+.select-list-item-checker{
+  display: flex;
+}
+.select-list-item-content{
+  flex: 1;
+}
+.fieldGroup{
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  // z-index: $z2;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: $field-wrap-width *2;
+  margin: 0 auto;
+  @include breakpoint(medium){
+    flex-wrap: nowrap;
+  };
+}
+@media screen and (min-width: 700px ) {
+  .fieldGroup{
+    flex-wrap: nowrap;
+  }
+}
+.fieldGroup > .field-wrap{
+  margin-right: 1px;
+  margin-left: 1px;
+}
+.fieldGroup > .field-wrap:last-of-type{
+  margin-right: 0;
+  margin-bottom: 0;
+}
+.fieldGroup > .field-wrap:first-of-type{
+  margin-left: 0;
+}
+.fieldGroup:last-child{
+}
+.fieldGroup .field-wrap{
+  
+}
+
+.fieldGroup.fieldGroup--uncollapsed{
+  margin-bottom: 30px;
+}
+.fieldGroup.fieldGroup--expanded{
+  max-width: 100%;
+}
+.field-wrap{
+    font-family: $font-family;
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    max-width: $field-wrap-width;
+    display: inline-block;
+    z-index: $field-wrap-elevation;
+}
+.field-wrap::after{
+    content: '';
+    width: 100%;
+    display: block;
+    background: $field-underline-color--active;
+    height: 2px;
+    transform: rotateY(90deg);
+    transform-origin: center;
+    transition: transform 0.2s ease-in-out;
+    z-index: $field-wrap-elevation;
+}
+.field-wrap:focus-within::after{
+    transform: rotateY(0deg);
+}
+.field-wrap.field--uncollapse{
+    margin-bottom: 30px;
+}
+.field-wrap.field--expand{
+    max-width: 100%;
+}
+// .field-wrap:last-of-type{
+//     margin-bottom: 30px;
+// }
+.field-input{
+    box-sizing: border-box;
+    width: 100%;
+    color: $field-text-color;
+    padding: 28px 15px 15px 15px;
+    background-color: $field-background;
+    border: none;
+    box-shadow: none;
+    display: block;
+    font-size: $field-text-size;
+    resize: none;
+    margin:0;
+    z-index: $field-text-elevation;
+}
+.field-input:focus{
+    background: $field-background--focus;
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+.field-input:disabled{
+    background: $field-background--disabled;
+    color: $field-text-color--disabled;
+}
+.field-label {
+    color: $field-label-color;
+    position: absolute;
+    left: 15px;
+    top: 0;
+    font-size: $field-label-size;
+    line-height: 1;
+    pointer-events: none;
+    z-index: $field-label-elevation;
+    transform: translateY(23px);
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+.field-input:focus ~ .field-label,
+.field--dirty .field-label,
+.field--focus .field-label,
+.field--error .field-label{
+    font-size: $field-label-size--focus;
+    transform: translateY(13px);
+}
+.field-input:focus ~ .field-label{
+    color: $field-label-color--focus;
+}
+.field--dirty .field-label{
+    color: $field-label-color--dirty;
+}
+.field--error .field-label{
+    color: $field-label-color--error;
+}
+.field-input:disabled ~ .field-label{
+    color: $field-label-color--disabled;
+}.uploadField{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.upload-label{
+  color: $color-dark-4;
+  background: $color-white;
+  opacity: 0.8;
+  border: 1px solid $color-light-gray;
+  // padding: 15px;
+  border-radius: 4px;
+  text-align: center;
+  // margin-bottom: 17px;
+  transition: opacity 0.2s ease-in-out;
+}
+.upload-label:hover{
+  opacity: 1;
+}
+.upload-label>span{
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-size: $font-size-up-1;
+  font-family: Roboto;
+  font-weight: 700;
+}
+.upload-label i{
+  display: inline-block;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: $font-size-up-2;
+  margin-right: 7.5px;
+}
+.upload-icon{
+  position: relative;
+  color: $color-dark-4;
+  padding: 15px;
+  opacity: 0.3;
+  transform: scale(0.8);
+  border-radius: 4000px;
+  text-align: center;
+  // margin-top: 1rem;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+.upload-icon:hover{
+  opacity: 0.6;
+  transform: scale(0.9);
+  cursor: pointer;
+}
+.upload-icon>i{
+  font-size: 5rem;
+}
+.upload-field{
+  display: none;
+}
+.upload-label:hover{
+  cursor: pointer;
+}
+.text-field{
+    height: 60px;
+}.suggestionField{
+  // width: 100%;
+  @include breakpoint(medium){
+    // max-width: 240px;
+    display: block;
+    box-sizing: border-box;
+    position: relative;
+    // background: $color-off-white;
+    height: 56px;
+  };
+}
+.suggestionField-input{
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  background-color: $color-tint-3;
+  border: none;
+  text-align: left;
+  color: $color-dark-gray;
+  // font-weight: $global-weight-bold;
+  padding: 0 15px;
+  margin-bottom: 0;
+  height: 54px;
+}
+.suggestionField-input::placeholder{
+  color: $color-dark-3;
+}
+.suggestionField-input-mask{
+  z-index: $z8;
+  // width: 240px;
+  box-sizing: border-box;
+  position: absolute;
+  background-color: $color-tint-3;
+  text-align: left;
+  color: $color-dark-gray;
+  // font-weight: 700;
+  padding: 0 15px;
+  margin-bottom: 0;
+  height: 54px;
+}
+.suggestionField-input:focus{
+  outline: none;
+  background-color: $color-tint-2;
+  border: none;
+  border-right: none;
+  box-shadow: none;
+}
+
+.suggestionField-dropdown{
+  position: absolute;
+  z-index: $z5;
+  width: 100%;
+  top: 55px;
+  right: 0;
+  background: $color-tint-3;
+  box-shadow: 1px 1px 4px -1px rgba(60, 60, 60, 0.2);
+  overflow: hidden;
+  transition: height 1s;
+}
+.suggestionField-dropdown:focus{
+  outline: none;
+}
+.suggestionField-option{
+  font-size: $font-size-down-1;
+  font-weight: 400;
+  display:block;
+  // border-bottom: 1px solid $color-tint-2;
+  // text-align: center;
+  padding: 7.5px 30px;
+}
+.suggestionField-option:last-of-type{
+  border-bottom: none;
+}
+.suggestionField-option:hover{
+  background: $color-tint-2;
+  cursor: pointer;
+}
+.suggestionField-show-dropdown{
+  height: auto;
+}
+.suggestionField-hide-dropdown{
+  height: 0;
+}
+.multiline{}
+.fieldWrap{
+  margin-bottom: 30px;
+}
+.form-error-message{
+  padding-top: 15px;
+  font-size: $font-size-down-2;
+  font-weight: $global-weight-bold;
+  color: $color-danger;
+}
